@@ -1,0 +1,61 @@
+# Python Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python Cache & Compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Database & SQLite files
+*.db
+*.sqlite3
+
+# Node Modules (Frontend)
+frontend/node_modules/
+frontend/dist/
+frontend/.eslintcache
+frontend/.next/
+frontend/out/
+
+# IDE files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Live Surveillance Data (Ignore dynamically generated logs/alerts, but keep folders via Gitkeep)
+backend/dataset/alerts/*
+!backend/dataset/alerts/.gitkeep
+backend/dataset/watchlist/*
+!backend/dataset/watchlist/.gitkeep
+backend/models/faces/*
+!backend/models/faces/.gitkeep
+backend/models/face_recognizer.yml

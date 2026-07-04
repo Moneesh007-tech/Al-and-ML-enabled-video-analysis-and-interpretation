@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-red: #DC2626;      /* Glowing Tactical Red */
+  --primary-red-hover: #B91C1C;
+  --primary-red-light: #FEE2E2;
+  --primary-red-glow: rgba(220, 38, 38, 0.2);
+  
+  --bg-white: #FFFFFF;
+  --bg-light: #FAFAFA;
+  --bg-panel: #F4F4F5;
+  --border-light: #E4E4E7;
+  
+  --text-dark: #0F172A;
+  --text-muted: #64748B;
+  
+  --video-bg: #090D16;          /* Dark monitor background for contrast */
+  
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-sans: 'Inter', sans-serif;
+  --font-title: 'Orbitron', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  height: 100vh;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-panel);
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-red);
+}
+
+/* Grid & Layout Utilities */
+.tactical-border {
+  border: 1px solid var(--border-light);
+  transition: all 0.3s ease;
+}
+
+.tactical-border-red {
+  border: 1px solid var(--primary-red);
+  box-shadow: 0 0 10px var(--primary-red-glow);
+}
+
+/* Glowing effects */
+.glow-red {
+  box-shadow: 0 0 15px rgba(220, 38, 38, 0.4);
+}
+
+.glow-text-red {
+  text-shadow: 0 0 8px rgba(220, 38, 38, 0.5);
+}
+
+/* Animations */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes pulse-border {
+  0%, 100% { border-color: var(--primary-red); }
+  50% { border-color: #F87171; }
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.anim-scanline {
+  position: relative;
+  overflow: hidden;
+}
+
+.anim-scanline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 49%, rgba(220, 38, 38, 0.1) 50%, transparent 51%);
+  background-size: 100% 4px;
+  animation: scanline 6s linear infinite;
+  pointer-events: none;
+}
+
+.anim-pulse-red {
+  animation: flash 1.5s infinite;
+}
+
+.alert-card-new {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Card glassmorphism */
+.tactical-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Buttons */
+.btn-red {
+  background-color: var(--primary-red);
+  color: white;
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  border: 1px solid var(--primary-red);
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-red:hover {
+  background-color: var(--primary-red-hover);
+  border-color: var(--primary-red-hover);
+  box-shadow: 0 0 12px var(--primary-red-glow);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--text-dark);
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid var(--border-light);
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-outline:hover {
+  background-color: var(--bg-panel);
+  border-color: var(--text-muted);
+}
+
+/* Mono style details */
+.mono-text {
+  font-family: var(--font-mono);
+}
+
+.title-text {
+  font-family: var(--font-title);
+}
