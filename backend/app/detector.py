@@ -4,12 +4,12 @@ import numpy as np
 import time
 from datetime import datetime
 
-# PyTorch 2.6+ compatibility fix: Monkey-patch torch.load to default to weights_only=False
+
 try:
     import torch
     original_load = torch.load
     def custom_load(*args, **kwargs):
-        # Force weights_only=False for trusted YOLO models to prevent PyTorch 2.6 security blocks
+        
         if "weights_only" not in kwargs:
             kwargs["weights_only"] = False
         else:
@@ -24,7 +24,6 @@ from ultralytics import YOLO
 from sqlalchemy.orm import Session
 from app.database import Alert, WatchlistMember
 
-# Paths
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MODELS_DIR = os.path.join(BASE_DIR, "models")
 DATASET_DIR = os.path.join(BASE_DIR, "dataset", "watchlist")
@@ -36,7 +35,7 @@ os.makedirs(ALERTS_DIR, exist_ok=True)
 
 class VideoAnalyzer:
     def __init__(self):
-        # Load YOLOv8 model (auto-downloads yolov8n.pt on first run)
+        
         try:
             self.yolo_model = YOLO("yolov8n.pt")
             print("YOLOv8 AI Model loaded successfully.")
