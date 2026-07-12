@@ -1,3 +1,4 @@
+from fastapi.middleware.cors import CORSMiddleware
 import os
 import sys
 
@@ -24,6 +25,17 @@ import app.schemas as schemas
 init_db()
 
 app = FastAPI(title="NSG AI/ML Video Analytics API")
+from fastapi.middleware.cors import CORSMiddleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://al-and-ml-enabled-video-analysis-an-five.vercel.app",
+        "https://al-and-ml-enabled-video-analysis-and-interpretation-flakf3ncd.vercel.app",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Configure CORS for React frontend (default Vite port is 5173)
 app.add_middleware(
