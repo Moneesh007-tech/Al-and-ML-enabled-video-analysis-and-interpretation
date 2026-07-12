@@ -18,7 +18,7 @@ import {
   X
 } from 'lucide-react';
 
-const API_BASE = 'http://localhost:8000';
+const API_BASE = 'https://al-and-ml-enabled-video-analysis-and-7m20.onrender.com';
 
 function App() {
   const [activeFeed, setActiveFeed] = useState('webcam');
